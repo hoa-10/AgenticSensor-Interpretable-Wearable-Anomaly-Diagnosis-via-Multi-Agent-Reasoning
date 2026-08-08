@@ -3,13 +3,13 @@
 <p align="center">
   <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3.9%2B-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python"></a>
   <a href="#"><img src="https://img.shields.io/badge/Architecture-Multi--Agent-10B981?style=for-the-badge&logo=openai&logoColor=white" alt="Multi-Agent"></a>
-  <a href="#"><img src="https://img.shields.io/badge/Benchmark-SOTA-8B5CF6?style=for-the-badge&logo=sparkles&logoColor=white" alt="SOTA"></a>
+  <a href="#"><img src="https://img.shields.io/badge/Evaluation-Synthetic%20Benchmark-3B82F6?style=for-the-badge&logo=pytest&logoColor=white" alt="Synthetic Benchmark"></a>
   <a href="https://archive.ics.uci.edu/ml/datasets/mhealth+dataset"><img src="https://img.shields.io/badge/Dataset-MHEALTH%20%7C%20PAMAP2-F97316?style=for-the-badge&logo=database&logoColor=white" alt="Dataset"></a>
 </p>
 
 ---
 
-## 📐 Framework Architecture
+## 📐 Framework Architecture & Perception Pipeline
 
 This repository implements the **Perception Layer (Layer 2)** within the 4-layer System Architecture Framework:
 
@@ -17,24 +17,47 @@ This repository implements the **Perception Layer (Layer 2)** within the 4-layer
   <img src="utils/framework_architecture.png" alt="System Architecture Framework" width="95%"/>
 </div>
 
-> **System Framework**: The Perception Layer processes raw multi-modal sensor streams (accelerometer, gyroscope, ECG) into structured diagnostic insights through feature transformation, statistical analysis, data cleaning, and multi-modal visual plot encoding for downstream reasoning agents.
+> **System Framework**: The Perception Layer transforms raw multi-modal sensor streams (accelerometer, gyroscope, ECG) into structured diagnostic insights through feature extraction, statistical signal processing, and multi-modal visual plot encoding.
+
+### 🔄 Multi-Agent 2-Thread Pipeline
+
+```text
+Raw Sensor Data (Parquet) & Fused Image Plots
+                      │
+                      ▼
+         [Thread 1: Vision & Evidence Pipeline]
+         - Encodes multi-sensor plots into visual representations
+         - Extracts baseline evidence & visual anomaly tags
+                      │
+                      ▼
+         [Thread 2: Specialist Reasoning Engine]
+         ┌──────────────────┬──────────────────┬──────────────────┐
+         │  Impact Agent    │   Health Agent   │ Sensor Fault Agt │
+         │ (Falls/Impacts)  │(Heart Rate/Exert)│ (Dropout/Drift)  │
+         └──────────────────┴──────────────────┴──────────────────┘
+                      │
+                      ▼
+         [Thread 2 Final Reasoning Agent]
+         - Aggregates specialist reasoning & numerical evidence
+         - Generates unified root-cause diagnostic report
+```
 
 ---
 
-## ✨ Key Capabilities
+## 🔍 Anomaly Types & Capabilities
 
-| Capability | Description |
+| Anomaly Category | Target Events & Signal Characteristics |
 | :--- | :--- |
-| 💥 **Impact Diagnostics** | Detects physical collisions, fall patterns, and high-G acceleration spikes. |
-| 🩺 **Health Monitoring** | Tracks physiological exertion, activity state changes, and heart rate anomalies. |
-| 🛠️ **Sensor Fault Analysis** | Identifies hardware faults including dropouts, signal drift, zero-variance flatlines, and noise. |
-| 🖥️ **Interactive GUI** | Full PyQt visual application for real-time sensor plot inspection and agent execution. |
+| 💥 **Physical Impact** | Sudden acceleration spikes, freefall deceleration windows, and physical collision patterns. |
+| 🩺 **Health Event** | Physiological stress, abnormal heart rate fluctuations, and activity state transitions. |
+| 🛠️ **Sensor Hardware Fault** | Signal dropouts (zero-variance flatlines), Gaussian noise injection, value clipping, and sensor drift. |
+| 🖥️ **Interactive Inspection** | PyQt visual interface for step-by-step sensor signal plot analysis and agent debugging. |
 
 ---
 
-## 📊 Quantitative Benchmark Results
+## 📊 Experimental Evaluation (Synthetic Benchmark, n = 299)
 
-**AgenticSensor** establishes new SOTA performance across detector-level perception grounding and end-to-end multimodal anomaly diagnosis ($n = 299$).
+The framework is evaluated on a **synthetic wearable anomaly benchmark dataset** consisting of **299 generated scenarios** constructed from real-world MHEALTH and PAMAP2 sensor recordings.
 
 ### 1. Detector-Level Performance (MHEALTH & PAMAP2)
 
@@ -57,7 +80,7 @@ This repository implements the **Perception Layer (Layer 2)** within the 4-layer
 | **AgenticSensor (Vision Only)** | 0.1130 | 0.6670 | 0.6430 | 0.6830 | 0.7350 |
 | **AgenticSensor (Ours)** | **`0.7880`** *(+11.5%)* | **`0.7640`** *(+29.3%)* | **`0.8300`** *(+75.5%)* | **`0.7230`** *(+59.6%)* | **`0.7670`** *(+28.7%)* |
 
-> 🚀 **Diagnostic Gain**: By fusing multi-modal visual plots with statistical signal verification, **AgenticSensor** achieves **+75.5% relative gain in Temporal IoU** and **+59.6% in Event Frame Accuracy** over competing baselines.
+> 📌 **Benchmark Context**: By fusing visual plot representations with numerical verification across synthetic anomaly scenarios, **AgenticSensor** demonstrates substantial relative gains in Temporal IoU (**+75.5%**) and Event Frame Accuracy (**+59.6%**) compared to external baseline configurations.
 
 ---
 
