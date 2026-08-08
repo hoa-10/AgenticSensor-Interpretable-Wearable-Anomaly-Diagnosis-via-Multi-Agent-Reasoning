@@ -1,0 +1,44 @@
+[SUBAGENT OUTPUT: TREND_STABILITY]
+Group: trend_stability
+Evidence intervals:
+start: 0
+end: 750
+- data_analysis: All trend metrics are low across chest, ECG, ankle, and arm channels.
+- cross_validation: This range is stable compared with the next range.
+
+Group: trend_stability
+Evidence intervals:
+start: 600
+end: 1350
+- data_analysis: Chest and body sensors remain low. No multi-sensor trend change is present.
+- cross_validation: This range continues the stable baseline.
+
+[SUBAGENT OUTPUT: SEASONALITY_RHYTHM_STABILITY]
+Group: seasonality_rhythm_stability
+Evidence intervals:
+start: 0
+end: 750
+- data_analysis: Rhythm metrics are low across accelerometer, gyroscope, ECG, and magnetometer channels.
+- cross_validation: Stable baseline.
+
+Group: seasonality_rhythm_stability
+Evidence intervals:
+start: 600
+end: 1350
+- data_analysis: One magnetometer channel has a large rhythm jump, but accelerometer, gyroscope, ECG, trend, and spike evidence remain stable.
+- cross_validation: The change is isolated to magnetometer evidence.
+
+[SUBAGENT OUTPUT: SPIKE_STRENGTH]
+Group: spike_strength
+Evidence intervals:
+start: 0
+end: 750
+data_analysis: Spike metrics are low across all sensor families.
+cross_validation: Stable baseline.
+
+Group: spike_strength
+Evidence intervals:
+start: 600
+end: 1350
+data_analysis: Spike metrics remain low across chest, ECG, ankle, and arm channels.
+cross_validation: No abrupt multi-sensor spike emerges.
