@@ -1,0 +1,25 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Environment & local secrets
+.env
+.env.*
+!.env.example
+
+# Local output logs & cache
+*.jsonl
+output/
+.pytest_cache/
+
+# Exclude standalone execution scripts & local configs
+gui.py
+main.py
+main_2.py
+path_config.py
+perception.config
+run_main2_repeated_categories.py
+test_non_impact_pipeline.py
+timing.py

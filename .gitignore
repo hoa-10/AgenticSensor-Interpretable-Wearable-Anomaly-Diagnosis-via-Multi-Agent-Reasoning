@@ -34,7 +34,7 @@ benchmark/
 *.pkl
 *.jsonl
 
-# Exclude root folders and scripts (only keep perception_layer)
+# Exclude root folders and scripts (only keep perception_layer core)
 /classification/
 /scripts/
 /sensor_layer/
@@ -42,3 +42,13 @@ benchmark/
 /recover_mhealth_parquet.py
 /reorganize_scenarios_300.py
 /test.py
+
+# Exclude specific perception_layer scripts & local configs
+perception_layer/gui.py
+perception_layer/main.py
+perception_layer/main_2.py
+perception_layer/path_config.py
+perception_layer/perception.config
+perception_layer/run_main2_repeated_categories.py
+perception_layer/test_non_impact_pipeline.py
+perception_layer/timing.py
