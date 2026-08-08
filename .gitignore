@@ -1,18 +1,18 @@
-# Secret & Environment Files
-.env
-.env.*
-*.env
-*.pem
-*.key
-
-# Python Bytecode & Virtual Environments
+# Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
-env/
-venv/
-ENV/
+
+# Environment & local secrets
+.env
+.env.*
+!.env.example
+
+# Local output logs & cache
+*.jsonl
+output/
+.pytest_cache/
 
 # System & IDE Directories
 .DS_Store
@@ -26,24 +26,21 @@ Thumbs.db
 # Heavy Datasets & Generated Outputs
 MHEALTHDATASET/
 mhealth_activity_plots/
-output/
 benchmark/
 *.parquet
 *.csv
 *.h5
 *.pkl
-*.jsonl
 
-# Exclude root folders and scripts (only keep perception_layer core)
-/classification/
-/scripts/
-/sensor_layer/
-/AGENTIC_SENSOR_MHEALTH_RESEARCH_REPORT.md
-/recover_mhealth_parquet.py
-/reorganize_scenarios_300.py
-/test.py
-
-# Exclude specific perception_layer scripts & local configs
+# Exclude standalone execution scripts & local configs (both root & perception_layer/)
+gui.py
+main.py
+main_2.py
+path_config.py
+perception.config
+run_main2_repeated_categories.py
+test_non_impact_pipeline.py
+timing.py
 perception_layer/gui.py
 perception_layer/main.py
 perception_layer/main_2.py
@@ -52,3 +49,12 @@ perception_layer/perception.config
 perception_layer/run_main2_repeated_categories.py
 perception_layer/test_non_impact_pipeline.py
 perception_layer/timing.py
+
+# Exclude root folders outside perception_layer
+/classification/
+/scripts/
+/sensor_layer/
+/AGENTIC_SENSOR_MHEALTH_RESEARCH_REPORT.md
+/recover_mhealth_parquet.py
+/reorganize_scenarios_300.py
+/test.py
