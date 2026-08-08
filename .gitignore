@@ -13,3 +13,13 @@ __pycache__/
 *.jsonl
 output/
 .pytest_cache/
+
+# Exclude standalone execution scripts & local configs
+gui.py
+main.py
+main_2.py
+path_config.py
+perception.config
+run_main2_repeated_categories.py
+test_non_impact_pipeline.py
+timing.py
