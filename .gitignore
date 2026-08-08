@@ -1,0 +1,44 @@
+# Secret & Environment Files
+.env
+.env.*
+*.env
+*.pem
+*.key
+
+# Python Bytecode & Virtual Environments
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+env/
+venv/
+ENV/
+
+# System & IDE Directories
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+.antigravitycli/
+.codex/
+.agents/
+
+# Heavy Datasets & Generated Outputs
+MHEALTHDATASET/
+mhealth_activity_plots/
+output/
+benchmark/
+*.parquet
+*.csv
+*.h5
+*.pkl
+*.jsonl
+
+# Exclude root folders and scripts (only keep perception_layer)
+/classification/
+/scripts/
+/sensor_layer/
+/AGENTIC_SENSOR_MHEALTH_RESEARCH_REPORT.md
+/recover_mhealth_parquet.py
+/reorganize_scenarios_300.py
+/test.py
